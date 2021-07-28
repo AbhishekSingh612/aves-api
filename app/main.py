@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify
 # from torch_utils import transform_image, get_prediction, get_top5
 # from names import getName
-from app.torch_utils import transform_image, get_prediction
+from app.torch_utils import transform_image, get_prediction, get_top5
 from app.names import getName
 
 app = Flask(__name__)
@@ -62,4 +62,3 @@ Allowed_Extention = {'png', 'jpg', 'jpeg'}
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in Allowed_Extention
-
