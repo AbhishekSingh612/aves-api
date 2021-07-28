@@ -101,7 +101,7 @@ def get_top5(image_tensor):
     top_labs = top_labs.cpu().numpy().tolist()[0]
     print("top lable and top probs ", top_labs, top_probs)
     top5_dic = {
-        getName(x): y for x, y in zip(top_labs, top_probs)
+        getName(x + 1): y for x, y in zip(top_labs, top_probs)
     }
     print(top5_dic)
     print("Get top endded")
