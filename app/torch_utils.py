@@ -6,6 +6,7 @@ from torch.autograd import Variable
 from torchvision import models
 import torch
 from app.names import getName
+# from names import getName
 
 # Here we are configuring our model structure
 # (no. of hidden layers and no. of neurons in it)
@@ -37,6 +38,7 @@ optimizer_ft = optim.SGD(model_ft.parameters(), lr=0.0001, momentum=0.9)
 # and also the optimizer parameters
 
 checkpoint = torch.load('app/model.pth', map_location=torch.device('cpu'))
+#checkpoint = torch.load('model.pth', map_location=torch.device('cpu'))
 print("model loaded")
 # here we load model parameters and optimizer parameters
 
@@ -88,6 +90,7 @@ def get_prediction(image_tensor):
 
 
 def get_top5(image_tensor):
+    print("started top")
     logits = model_ft(Variable(image_tensor))
     soft_max = torch.nn.Softmax(dim=1)
     probs = soft_max(logits)
