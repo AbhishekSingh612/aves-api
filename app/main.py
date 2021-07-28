@@ -42,6 +42,7 @@ def predict_top5():
             img_bytes = file.read()
             tensor = transform_image(img_bytes)
             data = get_top5(tensor)
+            print("top 5 main ",data)
             return jsonify(data)
 
         except:

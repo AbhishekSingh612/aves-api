@@ -92,10 +92,14 @@ def get_top5(image_tensor):
     soft_max = torch.nn.Softmax(dim=1)
     probs = soft_max(logits)
     top_probs, top_labs = probs.topk(5)
+    print("top lable and top probs ", top_labs, top_probs)
     top_probs, top_labs = top_probs.data, top_labs.data
     top_probs = top_probs.cpu().numpy().tolist()[0]
     top_labs = top_labs.cpu().numpy().tolist()[0]
+    print("top lable and top probs ", top_labs, top_probs)
     top5_dic = {
         getName(x): y for x, y in zip(top_labs, top_probs)
     }
+    print(top5_dic)
+    print("Get top endded")
     return top5_dic
