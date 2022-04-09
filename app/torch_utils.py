@@ -100,9 +100,11 @@ def get_top5(image_tensor):
     top_probs = top_probs.cpu().numpy().tolist()[0]
     top_labs = top_labs.cpu().numpy().tolist()[0]
     print("top lable and top probs ", top_labs, top_probs)
-    top5_dic = {
-        getName(x + 1): y for x, y in zip(top_labs, top_probs)
-    }
-    print(top5_dic)
+    # top5_dic = {
+    #     getName(x + 1): y for x, y in zip(top_labs, top_probs)
+    # }
+
+    top5_list = [{"birdName":getName(x + 1),"probability": y} for x, y in zip(top_labs, top_probs)]
+    print(top5_list)
     print("Get top endded")
-    return top5_dic
+    return top5_list

@@ -46,9 +46,7 @@ def predict_top5():
             print("44")
             data = get_top5(tensor)
             print("top 5 main ", data)
-            list = []
-            list.append(data)
-            return jsonify(list)
+            return jsonify(data)
 
         except:
             return jsonify({'error': 'Some Error'})
