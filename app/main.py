@@ -3,9 +3,11 @@ from flask import Flask, request, jsonify
 # from names import getName
 from app.torch_utils import transform_image, get_prediction, get_top5
 from app.names import getName
+from flask_cors import CORS, cross_origin
 
 app = Flask(__name__)
-
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
 
 @app.route('/predict', methods=['POST'])
 def predict():
@@ -31,6 +33,7 @@ def predict():
 
 
 @app.route('/predict-top5', methods=['POST'])
+@cross_origin()
 def predict_top5():
     if request.method == 'POST':
         file = request.files.get('file')
