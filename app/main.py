@@ -11,6 +11,8 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 
 @app.route('/predict', methods=['POST'])
 def predict():
+    print("Predict request received.")
+    print(request)
     if request.method == 'POST':
         file = request.files.get('file')
         if file is None or file.filename == "":
@@ -35,6 +37,8 @@ def predict():
 @app.route('/predict-top5', methods=['POST'])
 @cross_origin()
 def predict_top5():
+    print("Predict request received.")
+    print(request)
     if request.method == 'POST':
         file = request.files.get('file')
         if file is None or file.filename == "":
